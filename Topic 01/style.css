@@ -1,0 +1,65 @@
+body {
+    background-color: rgb(72, 75, 77);
+}
+
+h1 {
+    color: white;
+    text-align: center;
+}
+
+p {
+    font-family: verdana;
+    font-size: 20px;
+    color: white;
+}
+
+
+.my-circular-portrait {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.my-circular-portrait img {
+    width: 100%;
+    height: auto;
+
+}
+
+table {
+    border-color: rgba(204, 141, 23, 0.801);
+    border: 2px solid rgb(173, 173, 164);
+    row-gap: 20%;
+    border-collapse: separate;
+    border-spacing: 2px;
+    width: 100%;   
+}
+
+ul {
+    color: white;
+}
+
+td {
+   outline: 2px; 
+   color: white;
+}
+
+h2 {
+    color: beige;
+    
+}
+th {
+    border: 2px solid;
+    color: beige;
+}
+
+h3 {
+    font-weight: bold;
+    color: beige;
+}
+
+ol {
+    color: beige;
+}
