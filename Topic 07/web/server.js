@@ -22,6 +22,10 @@ app.get('/iot-applications', (req, res) => {
     res.sendFile(`${base}/iot-applications.html`);
 });
 
+app.get('/send-command', (req, res) => {
+    res.sendFile(`${base}/send-command.html`);
+});
+
 app.get('*', (req, res) => {
     res.sendFile(`${base}/404.html`);
 });
