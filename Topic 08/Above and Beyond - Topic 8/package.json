@@ -1,0 +1,14 @@
+{
+  "name": "ab",
+  "version": "1.0.0",
+  "description": "Above and Beyond for Topic 8",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Kartik Arora",
+  "license": "ISC",
+  "dependencies": {
+    "highcharts": "^10.3.3"
+  }
+}
