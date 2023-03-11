@@ -1,0 +1,15 @@
+{
+  "name": "above-and-beyond---topic-7",
+  "version": "1.0.0",
+  "description": "MQTT on Arduino using Node JS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Kartik Arora",
+  "license": "ISC",
+  "dependencies": {
+    "johnny-five": "^2.1.0",
+    "mongoose": "^7.0.1"
+  }
+}

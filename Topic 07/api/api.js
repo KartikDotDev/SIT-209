@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
-mongoose.connect('mongodb+srv://kartik4835be21:T3KsyseeDjtUnvEM@cluster0.5fl0zch.mongodb.net/mydb', {useNewUrlParser: true, useUnifiedTopology: true });
+require('dotenv').config();
+mongoose.connect(process.env.MONGO, {useNewUrlParser: true, useUnifiedTopology: true });
 const Device = require('./models/device'); 
 const app = express();
 const bodyParser = require('body-parser');

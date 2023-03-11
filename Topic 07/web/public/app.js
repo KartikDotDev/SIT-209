@@ -20,7 +20,6 @@ $.get(`${API_URL}/devices`)
     console.error(`Error: ${error}`);
   });
 
-// calling printTable() function to print the contents of the table.
 
 // On-Click function using jQuery
 $('#add-device').on('click', () => {
