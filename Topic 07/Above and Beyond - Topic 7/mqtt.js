@@ -1,9 +1,11 @@
 const mqtt = require('mqtt');
 const express = require('express');
 const mongoose = require('mongoose');
-const Device = require('../api/models/device');
+require('dotenv').config();
+mongoose.connect(process.env.MONGO, {useNewUrlParser: true, useUnifiedTopology: true });
+const Device = require('./device');
 const bodyParser = require('body-parser');
-const myId = 'KartikArora01';
+// const myId = 'KartikArora01';
 
 const app = express();
 app.use(express.static('public'));
@@ -23,20 +25,12 @@ app.use(bodyParser.urlencoded({
 const client = mqtt.connect("mqtt://broker.hivemq.com:1883");
 
 client.on('connect', () => {
-    client.subscribe('/sensorData'); 
+    client.subscribe(process.env.TOPIC); 
     console.log('mqtt connected');
 });
 
-app.post('/send-command', (req, res) => {
-  const { deviceId, command }  = req.body;
-  const topic = `/${myId}/command/${deviceId}`;
-  client.publish(topic, command, () => {
-    res.send('published new message');
-  });
-});
-
 client.on('message', (topic, message) => {
-  if (topic == '/sensorData') {
+  if (topic == process.env.TOPIC) {
     const data = JSON.parse(message);
 
     Device.findOne({"name": data.deviceId }, (err, device) => {
@@ -57,26 +51,4 @@ client.on('message', (topic, message) => {
       });
     });
   }
-});
-
-app.put('/sensor-data', (req, res) => {
-  const { deviceId }  = req.body;
-
-  const [lat, lon] = randomCoordinates().split(", ");
-  const ts = new Date().getTime();
-  const loc = { lat, lon };
-  min = Math.ceil(20);
-  max = Math.floor(50);
-  temp = Math.floor(Math.random() * (max - min + 1) + min);
-
-  const topic = `/sensorData`;
-  const message = JSON.stringify({ deviceId, ts, loc, temp });
-
-  client.publish(topic, message, () => {
-    res.send('published new message');
-  });
-});
-
-app.listen(port, () => { 
-    console.log(`listening on port ${port}`);
 });
